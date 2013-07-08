@@ -80,7 +80,7 @@ app.get('/rss/en', function(req, res){
               var article = $(".article ").html()
               
               //adding article to the jsonObj and flush "bad written" articles
-              if($(summary).text().length > 3 && (type === "news" || type === "features")){
+              if($(summary).text().length > 3 && (type === "news" || type === "features") && item.author !== "Anil George"){
                   jsonObj.push({guid: guid,
                                 type: type, 
                                 image: image,
