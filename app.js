@@ -43,7 +43,7 @@ app.get('/rss/en', function(req, res){
       , dateObj = new Date(feedDate)
       , dateNow = new Date();
       
-      if(dateNow - dateObj >= 60 * 60 * 1000){
+      if(dateNow - dateObj >= 1000){
     
         var jsonObj=[];
         
