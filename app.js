@@ -25,10 +25,12 @@ app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
 
+
 app.get('/rss/en', function(req, res){
     res.header("Access-Control-Allow-Origin", "*");  
     res.header('Access-Control-Allow-Methods', 'GET');
     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  
     
     //Feed Directory
     var feedDir = __dirname + '/public/feeds';
@@ -43,7 +45,7 @@ app.get('/rss/en', function(req, res){
       , dateObj = new Date(feedDate)
       , dateNow = new Date();
       
-      if(dateNow - dateObj >= 12*60*60*1000){
+      if(dateNow - dateObj >= 1000){
     
         var jsonObj=[];
         
@@ -53,6 +55,7 @@ app.get('/rss/en', function(req, res){
         .pipe(new FeedParser())
         .on('error', function(error) {
           console.log(error);
+          return res.send(jsonParsed);   
         })
         .on('meta', function (meta) {
           //console.log(meta);
@@ -79,14 +82,17 @@ app.get('/rss/en', function(req, res){
               $(".article").find('img').first().remove();  
               var article = $(".article ").html()
               
+              //Cleaning Summary
+              cleanSummary = $(summary).text($(summary).text());
+              
               //adding article to the jsonObj and flush "bad written" articles
-              if($(summary).text().length > 3 && (type === "news" || type === "features") && item.author !== "Anil George"){
+              if($(summary).text().length > 3 && (type === "news" || type === "features")){
                   jsonObj.push({guid: guid,
                                 type: type, 
                                 image: image,
                                 title: item.title, 
                                 description: article, 
-                                summary: $(summary).html(),
+                                summary: cleanSummary.text(),
                                 categories: item.categories,
                                 author: item.author,
                                 pubDate: item.pubdate});
