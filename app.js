@@ -36,7 +36,7 @@ app.get('/rss/en', function(req, res){
     var feedDir = __dirname + '/public/feeds';
     
     //Read Feed JSON File, parse it then pull out the date
-    fs.readFile(feedDir + '/ar.json', 'utf8', function (err,data) {
+    fs.readFile(feedDir + '/en.json', 'utf8', function (err,data) {
       if (err) {
         return console.log(err);
       }
@@ -143,7 +143,7 @@ app.get('/rss/ar', function(req, res){
     var feedDir = __dirname + '/public/feeds';
 
     //Read Feed JSON File, parse it then pull out the date
-    fs.readFile(feedDir + '/en.json', 'utf8', function (err,data) {
+    fs.readFile(feedDir + '/ar.json', 'utf8', function (err,data) {
       if (err) {
         return console.log(err);
       }
