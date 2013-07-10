@@ -25,7 +25,7 @@ app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-
+//Process the English Feed
 app.get('/rss/en', function(req, res){
     res.header("Access-Control-Allow-Origin", "*");  
     res.header('Access-Control-Allow-Methods', 'GET');
@@ -36,7 +36,7 @@ app.get('/rss/en', function(req, res){
     var feedDir = __dirname + '/public/feeds';
     
     //Read Feed JSON File, parse it then pull out the date
-    fs.readFile(feedDir + '/en.json', 'utf8', function (err,data) {
+    fs.readFile(feedDir + '/ar.json', 'utf8', function (err,data) {
       if (err) {
         return console.log(err);
       }
@@ -132,6 +132,7 @@ app.get('/rss/en', function(req, res){
     });   
 });
 
+//Process the Arabic Feed
 app.get('/rss/ar', function(req, res){
     res.header("Access-Control-Allow-Origin", "*");  
     res.header('Access-Control-Allow-Methods', 'GET');
