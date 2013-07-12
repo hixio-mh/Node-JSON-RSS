@@ -45,7 +45,8 @@ app.get('/rss/en', function(req, res){
       , dateObj = new Date(feedDate)
       , dateNow = new Date();
       
-      if(dateNow - dateObj >= 12*60*60*1000){
+      //TO CHANGE: Cache for 1 month to prevent Apple Disapproval Fuck you Grapes
+      if(dateNow - dateObj >= 30*24*60*60*1000){
     
         var jsonObj=[];
         
@@ -81,8 +82,12 @@ app.get('/rss/en', function(req, res){
               
               //DOM Manipulation: remove first image then construct the article
               $(".article").find('img').first().remove();  
-              var article = $(".article ").html()
               
+              if(type === "news"){
+                $(".article").find('table').eq(-1).remove();  
+              }
+              
+              var article = $(".article ").html()
               //Cleaning Summary
               cleanSummary = $(summary).text($(summary).text());
               
