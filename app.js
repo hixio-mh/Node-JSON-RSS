@@ -67,7 +67,8 @@ app.get('/rss/en', function(req, res){
               //DOM Maniupulation: Cleaning description from related links and authors
               $("<div class='article'>"+item.description+"</div>").appendTo("body");   
               $(".article").find('p').eq(-1).remove();   
-              $(".article").find('table').eq(-1).remove();  
+              $(".article").find('table').eq(-1).remove();
+              $(".article").find('a').attr('target', '_system');  
               
               
               //Constructing Summar, type and proper guid
