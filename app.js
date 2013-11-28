@@ -69,6 +69,7 @@ app.get('/rss/en', function(req, res){
               $("<div class='article'>"+item.description+"</div>").appendTo("body");   
               $(".article").find('p').eq(-1).remove();   
               $(".article").find('table').eq(-1).remove();
+              $(".article").find('ul').eq(-1).remove();
               $(".article").find('a').attr('target', '_system');  
               
               
