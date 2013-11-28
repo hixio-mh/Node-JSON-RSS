@@ -1,4 +1,3 @@
-
 /**
  * Module dependencies.
  */
@@ -46,7 +45,7 @@ app.get('/rss/en', function(req, res){
       , dateNow = new Date();
       
       //TO CHANGE: Cache for 1 month to prevent Apple Disapproval Fuck you Grapes
-      if(dateNow - dateObj >= 30*24*60*60*1000){
+      if(dateNow - dateObj >= 12*60*60*1000){
     
         var jsonObj=[];
         
