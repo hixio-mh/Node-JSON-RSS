@@ -10,6 +10,6 @@
     "jade": "*",
     "feedparser": "0.16.x",
     "request": "2.21.x",
-    "jquery": "3.0.x"
+    "jquery": "3.6.0"
   }
 }
